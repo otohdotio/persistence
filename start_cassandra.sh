@@ -32,7 +32,7 @@ else
 		fi
 		printf "."
 	done
-	docker cp ../schema.cql cs1:/schema.cql && docker exec cs1 cqlsh -k otohdotio -f /schema.cql >/dev/null 2>&1
+	docker cp ./schema.cql cs1:/schema.cql && docker exec cs1 cqlsh -k otohdotio -f /schema.cql >/dev/null 2>&1
 	printf "...done\n"
 fi
 EXISTING_CONTAINERS=`docker ps -q | xargs -I {} docker inspect --format '{{.Name}}' {} | grep "^/cs"`
